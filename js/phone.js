@@ -1,3 +1,6 @@
+document.getElementById('error-massage').style.display= 'none';
+
+
 // search input 
 const searchPhone = () =>{
     const searchField = document.getElementById('search-field');
@@ -6,6 +9,7 @@ const searchPhone = () =>{
     // clr data 
 
     searchField.value = ' ';
+    document.getElementById('error-massage').style.display= 'none';
 
 
 // load phone Data 
@@ -13,11 +17,20 @@ const url =`https://openapi.programming-hero.com/api/phones?search=${searchText}
  fetch (url)
  .then(res =>res.json())
  .then(data => displayPhone(data.data))
- 
+ .catch(error => displayError(error))
+}
+
+const displayError = error => {
+  document.getElementById('error-massage').style.display= 'block'
 }
 
 const displayPhone = phones=>{
     const searchResults =document.getElementById('search-results');
+    searchResults.textContent = ' ';
+    // error massage 
+    if(phones.length == 0){
+        document.getElementById('phn-not-found').style.display ='block'
+    }
     phones.forEach(phone => {
         console.log(phone);
         const div= document.createElement('div')
@@ -47,7 +60,7 @@ const loadPhoneDetail = details =>{
 }
 
 const displayPhoneDetails = phone =>{
-  console.log(phone)
+  
   const phoneDetails = document.getElementById('phone-details');
   const div = document.createElement('div');
   div.classList.add('card');
