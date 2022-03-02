@@ -31,8 +31,7 @@ const displayPhone = phones=>{
             </div>
             
              <button onclick="loadPhoneDetail()" class= "p-1 m-3 w-25 bg-primary bg-gradient text-white rounded-3">Details
-            
-             </button>
+            </button>
             
           </div>
         `;
@@ -49,5 +48,18 @@ const loadPhoneDetail = details =>{
 
 const displayPhoneDetails = phone =>{
   console.log(phone)
-  const 
+  const phoneDetails = document.getElementById('phone-details');
+  const div = document.createElement('div');
+  div.classList.add('card');
+  div.innerHTML = `
+  <img src="${phone.image}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${phone.phone_name}</h5>
+             
+              <button onclick="loadPhoneDetail()" class= "p-1 m-3 w-25 bg-primary bg-gradient text-white rounded-3">Details
+              </button>
+            </div>
+  `;
+  phoneDetails.appendChild(div)
+
 }
