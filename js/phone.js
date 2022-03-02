@@ -29,7 +29,9 @@ const displayPhone = phones=>{
               <h2 class="card-title">${phone.phone_name}</h2>
               <h5>${phone.brand}</h5>
             </div>
-            
+            <div class=" text-center">
+             <button class= "p-1 m-3 bg-primary bg-gradient text-white rounded-3">Details</button>
+            </div>
           </div>
         `;
         searchResults.appendChild(div)
