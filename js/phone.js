@@ -29,13 +29,25 @@ const displayPhone = phones=>{
               <h2 class="card-title">${phone.phone_name}</h2>
               <h5>${phone.brand}</h5>
             </div>
-            <div class=" text-center">
-             <button class= "p-1 m-3 bg-primary bg-gradient text-white rounded-3">Details</button>
-            </div>
+            
+             <button onclick="loadPhoneDetail()" class= "p-1 m-3 w-25 bg-primary bg-gradient text-white rounded-3">Details
+            
+             </button>
+            
           </div>
         `;
         searchResults.appendChild(div)
     })
 }
     
+const loadPhoneDetail = details =>{
+    const url = `https://openapi.programming-hero.com/api/phone/${details}`
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayPhoneDetails(data.data.slug))
+}
 
+const displayPhoneDetails = phone =>{
+  console.log(phone)
+  const 
+}
