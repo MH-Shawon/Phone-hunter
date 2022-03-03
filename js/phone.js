@@ -1,4 +1,4 @@
-document.getElementById('error-massage').style.display= 'none';
+document.getElementById('error-massage').style.display = 'none';
 
 
 // search input 
@@ -8,7 +8,7 @@ const searchPhone = () =>{
 
     // clr data 
 
-    searchField.value = ' ';
+    searchField.value = '';
     document.getElementById('error-massage').style.display= 'none';
 
 
@@ -27,6 +27,7 @@ const displayError = error => {
 const displayPhone = phones=>{
     const searchResults =document.getElementById('search-results');
     searchResults.textContent = '';
+    
     // error massage 
     if(phones.length == 0){
         document.getElementById('phn-not-found').style.display ='block'
@@ -66,6 +67,7 @@ const loadPhoneDetail = slug => {
 const displayPhoneDetails = phone =>{
   console.log(phone)
   const phoneDetails = document.getElementById('phone-details');
+  
   const div = document.createElement('div');
   div.classList.add('card');
   div.innerHTML = `
@@ -76,16 +78,8 @@ const displayPhoneDetails = phone =>{
               <p>chipSet:${phone.mainFeatures.chipSet}</p>
               <p>displaySize:${phone.mainFeatures.displaySize}</p>
               <p>memory:${phone.mainFeatures.memory}</p>
-              <p>memory:${phone.mainFeatures.sensors[0]}</p>
-              <p>memory:${phone.mainFeatures.sensors[1]}</p>
-              <p>memory:${phone.mainFeatures.sensors[2]}</p>
-              <p>memory:${phone.mainFeatures.sensors[3]}</p>
-              <p>memory:${phone.mainFeatures.sensors[4]}</p>
-              <p>memory:${phone.mainFeatures.sensors[5]}</p>
-              
-              
-
-             <button class="btn btn-success w-25 mx-auto rounded-3 fw-bolder" id="seeMoreId" onclick="seeMore()">See more</button>
+              <p>sensors:${phone.mainFeatures.sensors[0]},${phone.mainFeatures.sensors[1]},${phone.mainFeatures.sensors[2]},${phone.mainFeatures.sensors[3]},${phone.mainFeatures.sensors[4]},${phone.mainFeatures.sensors[5]}</p>
+            <button class="btn btn-success w-25 mx-auto rounded-3 fw-bolder" id="seeMoreId" onclick="seeMore()">See more</button>
               <div class="card-body" id="seeMoreDetails">
               <p>Bluetooth:${phone.others.Bluetooth}</p>
               <p>GPS:${phone.others.GPS}</p>
@@ -93,8 +87,9 @@ const displayPhoneDetails = phone =>{
               <p>Radio:${phone.others.Radio}</p>
               <p>USB:${phone.others.USB}</p>
               <p>WLAN:${phone.others.WLAN}</p>
+              <p class="fw-bolder">${phone.releaseDate == "" ? "Release Date not found" : phone.releaseDate }</p>
               </div>
-              <p>${phone.releaseDate == "" ? "Release Date not found" : phone.releaseDate }</p>
+              
   `;
   phoneDetails.appendChild(div)
   document.getElementById("seeMoreDetails").style.display = "none";
@@ -102,6 +97,6 @@ const displayPhoneDetails = phone =>{
 
 const seeMore = () => {
    document.getElementById("seeMoreDetails").style.display = "block";
+   
    document.getElementById("seeMoreId").style.display = "none";
 }
-
