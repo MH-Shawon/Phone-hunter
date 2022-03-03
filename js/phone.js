@@ -65,7 +65,7 @@ const loadPhoneDetail = slug => {
     .then(data =>displayPhoneDetails(data.data))
 }
 const displayPhoneDetails = phone =>{
-  console.log(phone)
+  
   const phoneDetails = document.getElementById('phone-details');
   
   const div = document.createElement('div');
